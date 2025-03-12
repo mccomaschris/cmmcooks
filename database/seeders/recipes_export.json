@@ -1,0 +1,386 @@
+[
+    {
+        "title": "BBQ Sauce",
+        "description": null,
+        "ingredients": [
+            "1 cup ketchup",
+            "1\/2 cup apple cider vinegar",
+            "1\/3 cup brown sugar",
+            "1 tbsp worcestershire sauce",
+            "1 tbsp BBQ rub",
+            "1\/4 cup beef broth"
+        ],
+        "instructions": [
+            "Combine all ingredients in a sauce pan and simmer until desired thickness"
+        ],
+        "categories": [
+            "sauces"
+        ]
+    },
+    {
+        "title": "Beef and Broccoli Bowl",
+        "description": null,
+        "ingredients": [
+            "1 1\/2 cup medium grain white rice",
+            "3 cups water",
+            "1 lb shaved beef",
+            "3\/4 cup sweet chili sauce",
+            "3 tbsp sriracha",
+            "3 cups shredded carrots",
+            "4 cups broccoli florets",
+            "1 tbsp olive oil",
+            "1\/4 cup roaster, unsalted peanuts crushed"
+        ],
+        "instructions": [
+            "Cook rice and water",
+            "Heat olive oil in pan on medium heat, add beef and cook through",
+            "Reduce heat to low. Add sweet chili sauce, sriracha, soy sauce",
+            "Stir until sauce is combined, beef is coated",
+            "In a separate pan, add broccoli florets with 2 tbsp of water and cover. Steam on low heat for about 5 minutes",
+            "Remove cover and add shredded carrots",
+            "Stir to combine and cook until carrots soften",
+            "Assemble your bowl by plating rice first, then beef, then veggies, and crushed peanuts on top"
+        ],
+        "categories": [
+            "dinner"
+        ]
+    },
+    {
+        "title": "Beer Cheese Sauce",
+        "description": null,
+        "ingredients": [
+            "2 tbsp butter",
+            "2 tbsp flour",
+            "1 tsp dry mustard",
+            "1 tsp salt",
+            "1 cup milk",
+            "2 cups shredded sharp cheddar cheese",
+            "4 oz canned diced green chilies",
+            "1\/2 cup beer"
+        ],
+        "instructions": [
+            "Add butter and flour to sauce pan over medium heat and whisk until smooth",
+            "Add mustard, salt, pepper, and mix",
+            "Slowly mix in milk until smooth and thicker",
+            "Whisk in beer",
+            "Add cheese handful at a time and stir as adding",
+            "Add green chiles"
+        ],
+        "categories": [
+            "sauces"
+        ]
+    },
+    {
+        "title": "Cabbage patch stew",
+        "description": null,
+        "ingredients": [
+            "1 lb ground beef",
+            "1 cup chopped onion",
+            "2 ribs celery diced",
+            "1 head of cabbage, roughly chopped",
+            "28 oz canned stewed tomatoes",
+            "15 oz pinto beans, drained and rinsed",
+            "1\/2 cup ketchup",
+            "10 oz rotel, undrained",
+            "2 tbsp ancho chili powder",
+            "1\/2 tsp oregano"
+        ],
+        "instructions": [
+            "In a large skillet, cook the beef, onions and celery over medium heat until meat is no longer pink, breaking meat into crumbles; drain.",
+            "Transfer to a 5-qt. slow cooker. Stir in the cabbage, stewed tomatoes, beans, diced tomatoes, ketchup, chili powder, oregano, pepper and salt. Cover and cook on low for 6-8 hours or until cabbage is tender."
+        ],
+        "categories": [
+            "dinner"
+        ]
+    },
+    {
+        "title": "Carl\u2019s Spicy Barbecues",
+        "description": null,
+        "ingredients": [
+            "1 lb ground beef",
+            "1 tsp mustard",
+            "3 tbsp vinegar",
+            "3 tbsp brown sugar",
+            "3\/4 cup chili sauce",
+            "1 tsp worcestershire sauce",
+            "1\/2 cup water"
+        ],
+        "instructions": [
+            "Brown ground beef and remove from pan",
+            "Combine remaining ingredients and 1\/2 cup water in pan and simmer uncovered for 10 minutes, stirring occasionally",
+            "Add ground beef and simmer 5 minutes"
+        ],
+        "categories": [
+            "dinner"
+        ]
+    },
+    {
+        "title": "Garlic and Dill Pickles",
+        "description": null,
+        "ingredients": [
+            "Cucumbers",
+            "3-5 whole garlic cloves",
+            "1\/4 Sweet onion sliced",
+            "Fresh dill",
+            "Fill white vinegar to half of 32oz jar, with dill, pickles and onions in jar",
+            "Fill remaining half with water",
+            "4 tsp salt",
+            "4 tsp sugar"
+        ],
+        "instructions": [
+            "Boil vinegar, water, salt and sugar until salt and sugar disolves",
+            "Add boiled mixture over jarred cucumbers, garlic, onion and dill"
+        ],
+        "categories": [
+            "sides"
+        ]
+    },
+    {
+        "title": "Hot dog sauce",
+        "description": null,
+        "ingredients": [
+            "2 lbs chorizo",
+            "1lb ground beef",
+            "28 oz can crushed tomatoes",
+            "1 diced white onion",
+            "2 cloves garlic",
+            "6 oz tomato sauce",
+            "2 tbsp chili powder",
+            "2 tbsp oregano",
+            "1\/2 bottle beer"
+        ],
+        "instructions": [
+            "Brown chorizo and ground beef",
+            "Add oil and garlic until garlic is fragrant",
+            "Add onions and cook until starting to soften",
+            "Add crushed tomatoes, tomato sauce, chili powder, and oregano and mix",
+            "Add beer and mix well",
+            "Simmer for 20-30 minutes on low",
+            "Salt and pepper to taste"
+        ],
+        "categories": [
+            "sauces"
+        ]
+    },
+    {
+        "title": "Norma\u2019s Pumpkin Pie",
+        "description": null,
+        "ingredients": [
+            "2 9 inch pie crusts",
+            "1 large can of pumpkin",
+            "1 1\/2 cup brown sugar",
+            "4 eggs, well-beaten",
+            "3 tbsp melted butter",
+            "3 tsp pumpkin pie spice",
+            "2 tbsp dark molasses",
+            "1 tsp salt",
+            "13 oz evaporated milk"
+        ],
+        "instructions": [
+            "Line pie pans with pastry",
+            "Preheat oven to 450",
+            "Combine ingredients in order given",
+            "Bake at 450\u00b0 for 10 minutes reduce heat quickly (leave oven door ajar) to slow oven to 325",
+            "Continue baking 30 minutes or so or until knife inserted in center comes out clean",
+            "Serve with Cool Whip"
+        ],
+        "categories": [
+            "desserts"
+        ]
+    },
+    {
+        "title": "Pimento Cheese",
+        "description": null,
+        "ingredients": [
+            "12 oz diced pimentos",
+            "4 ounces cream cheese, at room temperature",
+            "1\/2 cup Duke's",
+            "2 tbsp dijon",
+            "1 tsp hot sauce",
+            "1\/2 tsp salt",
+            "1\/4 tsp sugar",
+            "1\/8 tsp cayenne pepper",
+            "1\/8 tsp pepper",
+            "1\/2 tsp smoked paprika",
+            "1\/2 cup diced sweet relish",
+            "1\/4 cup bread and butter pickle juice",
+            "16 oz sharp cheddar (or cheese of your choice)"
+        ],
+        "instructions": [
+            "Mix cream cheese in a bowl until soft",
+            "Add Duke's and mix well",
+            "Add spices and hot sauce and mix",
+            "Add relish, pickle juice and cheese and mix",
+            "Add in pimentos and mix"
+        ],
+        "categories": [
+            "sides"
+        ]
+    },
+    {
+        "title": "Horseradish sauce",
+        "description": null,
+        "ingredients": [
+            "1\/3 cup Duke\u2019s mayo",
+            "1\/2 cup sour cream",
+            "1\/4 cup prepared horseradish",
+            "2 tsp lemon juice",
+            "1 tbsp The W Sauce",
+            "2 tbsp chives"
+        ],
+        "instructions": [
+            "Combine all ingredients in a bowl and mix well"
+        ],
+        "categories": [
+            "sauces"
+        ]
+    },
+    {
+        "title": "Cheesy shredded potatoes",
+        "description": null,
+        "ingredients": [
+            "32oz bag of frozen hash browns",
+            "2 cans cream of chicken soup",
+            "1 diced sweet onion",
+            "16oz shredded Colby jack, or cheese of your choice",
+            "8oz French onion dip",
+            "Your favorite BBQ rub"
+        ],
+        "instructions": [
+            "Combine all ingredients in a baking dish",
+            "Bake at 375\u00b0 for 60-75 minutes, stirring often"
+        ],
+        "categories": [
+            "sides"
+        ]
+    },
+    {
+        "title": "Sausage gravy",
+        "description": null,
+        "ingredients": [
+            "1 lbs breakfast sausage",
+            "1\/3 cup all-purpose flour",
+            "3-4 cups milk",
+            "4 tbsp black pepper",
+            "1 tsp Lawry\u2019s",
+            "2 tbsp Cholula hot sauce"
+        ],
+        "instructions": [
+            "Brown sausage over medium heat until cooked",
+            "Turn to medium low heat and sprinkle in flour, mixing constantly until flour is absorbed into meat",
+            "Slowly pour 3 cups of milk in, whisking constantly",
+            "Add pepper, Lawry\u2019s and hot sauce, stir well",
+            "Cook gravy on medium low, stirring often, until gravy thickens (should take 10-15 minutes)",
+            "If gravy is too thick add a bit more milk"
+        ],
+        "categories": [
+            "sauces"
+        ]
+    },
+    {
+        "title": "Coleslaw dressing",
+        "description": null,
+        "ingredients": [
+            "1\/2 cup mayo",
+            "1 bunch of green onions, diced",
+            "2 tbsp apple cider vinegar",
+            "2 tbsp sugar",
+            "1 tsp celery seeds",
+            "1 tsp black pepper",
+            "1 tsp smoked paprika",
+            "Pinch of salt"
+        ],
+        "instructions": [
+            "Add all items to large bowl and mix well"
+        ],
+        "categories": [
+            "sauces"
+        ]
+    },
+    {
+        "title": "Egg Roll in a Bowl",
+        "description": null,
+        "ingredients": [
+            "1 lbs ground beef",
+            "1 tbsp minced garlic",
+            "1 tbsp ginger paste",
+            "14 oz cole slaw mix",
+            "2 tbsp sriracha",
+            "1\/3 cup soy sauce",
+            "2 whole eggs",
+            "1 tbsp sesame oil",
+            "2 tbsp chives\/green onions"
+        ],
+        "instructions": [
+            "In large skillet brown ground beef",
+            "Add the garlic and cook until fragrant",
+            "Add the coleslaw, soy sauce, ginger and cook until desired doneness",
+            "Make a well in the center of the skillet and add the eggs. Scramble until done over low heat.",
+            "Top with sriracha, sesame seeds and sesame oil"
+        ],
+        "categories": [
+            "dinner"
+        ]
+    },
+    {
+        "title": "Enchilada beef",
+        "description": null,
+        "ingredients": [
+            "2 lbs shredded beef",
+            "1 tbsp garlic powder",
+            "1 tbsp smoked paprika",
+            "10oz can red enchilada sauce"
+        ],
+        "instructions": [
+            "In a pan heat up enchilada sauce, garlic powder and smoked paprika",
+            "Add shredded chuck roast to enchilada sauce",
+            "Cook over medium heat until most of the liquid disappears"
+        ],
+        "categories": [
+            "dinner"
+        ]
+    },
+    {
+        "title": "Shredded beef",
+        "description": null,
+        "ingredients": [
+            "3 lbs chuck roast",
+            "Favorite rub\/seasoning",
+            "1 head of garlic roughly chopped",
+            "1 white onion roughly chopped",
+            "2-3 jalape\u00f1os roughly chopped",
+            "18 oz beef broth\/stock"
+        ],
+        "instructions": [
+            "Heat smoker to 275\u00b0",
+            "Season chuck roast with favorite rub",
+            "Smoke chuck roast at 275\u00b0 for 2 hours",
+            "In a slow cooker add chuck roast, broth, onions, garlic and jalape\u00f1os",
+            "Cook on high for 4-5 hours, flipping once",
+            "Remove beef and shred"
+        ],
+        "categories": [
+            "dinner"
+        ]
+    },
+    {
+        "title": "French toast",
+        "description": null,
+        "ingredients": [
+            "1 cup whole milk",
+            "4 tbsp brown sugar",
+            "4 large eggs",
+            "Pinch of cinnamon",
+            "Pinch of nutmeg",
+            "Pinch of salt",
+            "1 tsp vanilla extract",
+            "2 tbsp melted butter"
+        ],
+        "instructions": [
+            "Mix all items in bowl"
+        ],
+        "categories": [
+            "breakfast"
+        ]
+    }
+]
