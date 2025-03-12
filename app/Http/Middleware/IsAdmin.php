@@ -15,10 +15,6 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (app()->environment('local')) {
-            return $next($request);
-        }
-
         $allowedEmails = explode(',', config('app.allowed_admin_emails'));
 
         if ($request->user() && in_array($request->user()->email, $allowedEmails, true)) {
