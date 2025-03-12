@@ -18,9 +18,9 @@ class IsAdmin
         $allowedEmails = explode(',', config('app.allowed_admin_emails'));
 
         if ($request->user() && in_array($request->user()->email, $allowedEmails, true)) {
-            return response('Unauthorized.', 401);
+            return $next($request);
         }
 
-        return $next($request);
+        return response('Unauthorized.', 401);
     }
 }
