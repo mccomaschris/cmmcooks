@@ -6,6 +6,10 @@ use App\Models\Recipe;
 new class extends Component {
     public $name = '';
 
+    public $rules = [
+        'name' => 'required|string|max:255',
+    ];
+
 	public function save()
     {
         $this->validate();
