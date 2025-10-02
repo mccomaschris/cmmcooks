@@ -17,7 +17,7 @@
 		<div>
             <flux:header container class="bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-700">
                 <flux:spacer />
-				<flux:brand href="#" logo="/cmmcooks.svg" name="CMM Cooks" class="max-lg:hidden dark:hidden" />
+				<flux:brand href="#" logo="/cmmcooks.svg" name="CMM Cooks!" class="max-lg:hidden dark:hidden" />
                 <flux:spacer />
 			</flux:header>
 
