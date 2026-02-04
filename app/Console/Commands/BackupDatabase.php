@@ -2,17 +2,18 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Notification;
 use App\Notifications\DatabaseBackupNotification;
 use Carbon\Carbon;
-use Symfony\Component\Process\Process;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 class BackupDatabase extends Command
 {
     protected $signature = 'backup:database';
+
     protected $description = 'Backup the database and upload it to Digital Ocean Spaces';
 
     public function handle()
@@ -33,7 +34,7 @@ class BackupDatabase extends Command
             '--host=' . $dbHost,
             '--port=' . $dbPort,
             $dbName,
-            '--result-file=' . $filePath
+            '--result-file=' . $filePath,
         ];
 
         $process = new Process($command);
@@ -53,12 +54,12 @@ class BackupDatabase extends Command
             Notification::route('mail', env('BACKUP_NOTIFICATION_EMAIL'))
                 ->notify(new DatabaseBackupNotification($filename, $storageUrl));
 
-            $this->info("Email notification sent to " . env('BACKUP_NOTIFICATION_EMAIL'));
+            $this->info('Email notification sent to ' . env('BACKUP_NOTIFICATION_EMAIL'));
 
             // Delete local file after upload
             unlink($filePath);
         } catch (ProcessFailedException $exception) {
-            $this->error("Backup failed: " . $exception->getMessage());
+            $this->error('Backup failed: ' . $exception->getMessage());
         }
     }
 }

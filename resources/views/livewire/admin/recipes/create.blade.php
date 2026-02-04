@@ -1,22 +1,28 @@
 <?php
 
-use Livewire\Volt\Component;
 use App\Models\Recipe;
+use Illuminate\Support\Str;
+use Livewire\Attributes\Layout;
+use Livewire\Component;
 
-new class extends Component {
+new
+#[Layout('layouts::admin')]
+class extends Component
+{
     public $name = '';
 
     public $rules = [
         'name' => 'required|string|max:255',
     ];
 
-	public function save()
+    public function save()
     {
         $this->validate();
 
-        $recipe = Recipe::create(
-            $this->form->all()
-        );
+        $recipe = Recipe::create([
+            'name' => $this->name,
+            'slug' => Str::slug($this->name),
+        ]);
 
         return $this->redirect(route('admin.recipes.edit', $recipe));
     }

@@ -2,21 +2,24 @@
 <?php
 
 use App\Models\Ingredient;
-use Livewire\Volt\Component;
+use Livewire\Component;
 
-new class extends Component {
+new class extends Component
+{
     public Ingredient $ingredient;
 
     public $name = '';
-    public $amount = '';
-	public $note = '';
 
-	public function rules()
+    public $amount = '';
+
+    public $note = '';
+
+    public function rules()
     {
         return [
             'name' => ['required', 'string'],
-			'amount' => ['nullable', 'string'],
-			'note' => ['nullable', 'string'],
+            'amount' => ['nullable', 'string'],
+            'note' => ['nullable', 'string'],
         ];
     }
 
@@ -33,14 +36,14 @@ new class extends Component {
         $this->validate();
 
         $this->ingredient->update([
-			'name' => $this->name,
+            'name' => $this->name,
             'amount' => $this->amount,
-			'note' => $this->note,
+            'note' => $this->note,
         ]);
 
-        $this->modal('ingredient-edit-' . $this->ingredient->id)->close();
+        Flux::modal('ingredient-edit-' . $this->ingredient->id)->close();
 
-		Flux::toast('Ingredient updated successfully.');
+        Flux::toast('Ingredient updated successfully.');
     }
 }; ?>
 

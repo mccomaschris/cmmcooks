@@ -2,19 +2,21 @@
 <?php
 
 use App\Models\Instruction;
-use Livewire\Volt\Component;
+use Livewire\Component;
 
-new class extends Component {
+new class extends Component
+{
     public Instruction $instruction;
 
     public $name = '';
-	public $note = '';
 
-	public function rules()
+    public $note = '';
+
+    public function rules()
     {
         return [
             'name' => ['required', 'string'],
-			'note' => ['nullable', 'string'],
+            'note' => ['nullable', 'string'],
         ];
     }
 
@@ -30,13 +32,13 @@ new class extends Component {
         $this->validate();
 
         $this->instruction->update([
-			'name' => $this->name,
-			'note' => $this->note,
+            'name' => $this->name,
+            'note' => $this->note,
         ]);
 
-        $this->modal('instruction-edit-' . $this->instruction->id)->close();
+        Flux::modal('instruction-edit-' . $this->instruction->id)->close();
 
-		Flux::toast('Instruction updated successfully.');
+        Flux::toast('Instruction updated successfully.');
     }
 }; ?>
 

@@ -1,8 +1,9 @@
 <?php
 
-use Livewire\Volt\Component;
+use Livewire\Component;
 
-new class extends Component {
+new class extends Component
+{
     public array $breadcrumbs = [];
 
     public function mount()
@@ -33,7 +34,6 @@ new class extends Component {
             ];
         }
     }
-
 }; ?>
 
 <div class="mb-10">

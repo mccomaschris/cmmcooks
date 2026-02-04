@@ -1,53 +1,57 @@
 <?php
 
-use Livewire\Volt\Component;
-use App\Livewire\Forms\RecipeForm;
 use App\Models\Recipe;
-use Livewire\Attributes\{Layout, Title};
 use Illuminate\Validation\Rule;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
+use Livewire\Component;
 
 new
+#[Layout('layouts::admin')]
 #[Title('All recipes')]
-class extends Component {
-	public Recipe $recipe;
+class extends Component
+{
+    public Recipe $recipe;
 
-	public $name = '';
-	public $description = '';
-	public $notes = '';
+    public $name = '';
 
-	public function rules()
+    public $description = '';
+
+    public $notes = '';
+
+    public function rules()
     {
         return [
             'name' => [
                 'required',
-				'string',
+                'string',
                 Rule::unique('recipes')->ignore($this->recipe->id),
             ],
-            'description' => 'nullable|date',
-			'notes' => 'nullable|date',
+            'description' => 'nullable|string',
+            'notes' => 'nullable|string',
         ];
     }
 
-	public function mount(Recipe $recipe)
-	{
-		$this->recipe = $recipe;
-		$this->name = $recipe->name;
-		$this->description = $recipe->description;
-		$this->notes = $recipe->notes;
-	}
+    public function mount(Recipe $recipe)
+    {
+        $this->recipe = $recipe;
+        $this->name = $recipe->name;
+        $this->description = $recipe->description;
+        $this->notes = $recipe->notes;
+    }
 
-	public function update()
-	{
-		$this->validate();
+    public function update()
+    {
+        $this->validate();
 
         $this->recipe->update([
-			'name' => $this->name,
-			'description' => $this->description,
-			'notes' => $this->notes,
+            'name' => $this->name,
+            'description' => $this->description,
+            'notes' => $this->notes,
         ]);
 
-		Flux::toast('Recipe updated successfully!');
-	}
+        Flux::toast('Recipe updated successfully!');
+    }
 }; ?>
 
 <div>

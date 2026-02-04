@@ -1,11 +1,13 @@
 <?php
 
-use Livewire\Volt\Component;
 use App\Models\Category;
 use App\Models\Recipe;
+use Livewire\Component;
 
-new class extends Component {
+new class extends Component
+{
     public Recipe $recipe;
+
     public $categories = [];
 
     public function mount(Recipe $recipe)

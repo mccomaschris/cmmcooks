@@ -1,16 +1,15 @@
 <?php
 
+use App\Http\Middleware\IsAdmin;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
-use Livewire\Volt\Volt;
-use App\Models\User;
-use App\Http\Middleware\IsAdmin;
+use Laravel\Socialite\Facades\Socialite;
 
-Volt::route('/', 'site.index')->name('site.index');
+Route::livewire('/', 'site.index')->name('site.index');
 
-Volt::route('/recipes/{recipe}', 'recipes.show')->name('recipes.show');
+Route::livewire('/recipes/{recipe}', 'recipes.show')->name('recipes.show');
 
 Route::get('/recipes', function () {
     return Redirect::route('site.index');
@@ -21,9 +20,9 @@ Route::middleware([isAdmin::class])->group(function () {
         return Redirect::route('admin.recipes.index');
     })->name('admin.index');
 
-    Volt::route('/admin/recipes', 'admin.recipes.index')->name('admin.recipes.index');
-    Volt::route('/admin/recipes/create', 'admin.recipes.create')->name('admin.recipes.create');
-    Volt::route('/admin/recipes/{recipe}/edit', 'admin.recipes.edit')->name('admin.recipes.edit');
+    Route::livewire('/admin/recipes', 'admin.recipes.index')->name('admin.recipes.index');
+    Route::livewire('/admin/recipes/create', 'admin.recipes.create')->name('admin.recipes.create');
+    Route::livewire('/admin/recipes/{recipe}/edit', 'admin.recipes.edit')->name('admin.recipes.edit');
 
     Route::get('/admin/recipes/{recipe}', function ($recipe) {
         return Redirect::route('recipes.show', $recipe);
@@ -45,6 +44,7 @@ Route::get('/google/callback', function () {
 
     if ($user) {
         Auth::login($user);
+
         return Redirect::route('admin.index');
     } else {
         return response('Unauthenticated.', 401);

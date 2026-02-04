@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Recipe extends Model
 {
-    protected $fillable = ['name', 'description', 'note', 'image'];
+    use HasFactory;
+
+    protected $fillable = ['name', 'slug', 'description', 'note', 'image'];
 
     public function categories()
     {
@@ -41,9 +44,9 @@ class Recipe extends Model
     public function similarRecipesBothWays()
     {
         return $this->belongsToMany(Recipe::class, 'recipe_similar', 'recipe_id', 'similar_recipe_id')
-                    ->orWhereHas('similarRecipes', function ($query) {
-                        $query->where('similar_recipe_id', $this->id);
-                    });
+            ->orWhereHas('similarRecipes', function ($query) {
+                $query->where('similar_recipe_id', $this->id);
+            });
     }
 
     public function getRouteKeyName()

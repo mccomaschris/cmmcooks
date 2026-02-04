@@ -3,9 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-use Database\Seeders\RecipeSeeder;
 use App\Models\User;
+use Illuminate\Database\Seeder;
 use Nette\Utils\Random;
 
 class DatabaseSeeder extends Seeder
@@ -26,7 +25,7 @@ class DatabaseSeeder extends Seeder
         }
 
         $this->call([
-		    RecipeSeeder::class,
-		]);
+            RecipeSeeder::class,
+        ]);
     }
 }

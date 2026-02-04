@@ -1,27 +1,30 @@
 <?php
 
-use Livewire\Volt\Component;
 use App\Models\Recipe;
+use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
+use Livewire\Component;
 use Livewire\WithPagination;
-use Livewire\Attributes\{Layout, Title};
 
 new
+#[Layout('layouts::admin')]
 #[Title('All recipes')]
-class extends Component {
-	use WithPagination;
+class extends Component
+{
+    use WithPagination;
 
-	public function remove($id)
+    public function remove($id)
     {
-		Recipe::findOrFail($id)->delete();
+        Recipe::findOrFail($id)->delete();
 
-		$this->resetPage();
+        $this->resetPage();
 
         Flux::modal('recipe-remove')->close();
 
-		Flux::toast('Recipe deleted successfully.');
+        Flux::toast('Recipe deleted successfully.');
     }
 
-	public function with(): array
+    public function with(): array
     {
         return [
             'recipes' => Recipe::orderby('created_at', 'desc')->paginate(10),

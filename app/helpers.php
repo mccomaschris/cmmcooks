@@ -1,5 +1,6 @@
 <?php
-if (!function_exists('twcss')) {
+
+if (! function_exists('twcss')) {
     function twcss($path)
     {
         $fullPath = public_path($path);

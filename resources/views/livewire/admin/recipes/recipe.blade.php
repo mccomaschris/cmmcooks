@@ -1,15 +1,16 @@
 <?php
 
-use Livewire\Volt\Component;
 use App\Models\Recipe;
+use Livewire\Component;
 
-new class extends Component {
-	public Recipe $recipe;
+new class extends Component
+{
+    public Recipe $recipe;
 
-	public function mount(Recipe $recipe)
-	{
-		$this->recipe = $recipe;
-	}
+    public function mount(Recipe $recipe)
+    {
+        $this->recipe = $recipe;
+    }
 }; ?>
 
 <flux:table.row :key="$recipe->id">

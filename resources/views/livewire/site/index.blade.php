@@ -1,22 +1,23 @@
 <?php
 
-use Livewire\Volt\Component;
 use App\Models\Recipe;
+use Livewire\Component;
 
 new
 #[Title('CMM Cooks | Recipes')]
-class extends Component {
-	public string $search = '';
+class extends Component
+{
+    public string $search = '';
 
-	public function with(): array
+    public function with(): array
     {
-		$recipes = Recipe::query();
+        $recipes = Recipe::query();
 
-		if ($this->search) {
-			$recipes->where('name', 'like', "%{$this->search}%")->orderby('name', 'asc');
-		} else {
-			$recipes->inRandomOrder();
-		}
+        if ($this->search) {
+            $recipes->where('name', 'like', "%{$this->search}%")->orderby('name', 'asc');
+        } else {
+            $recipes->inRandomOrder();
+        }
 
         return [
             'recipes' => $recipes->get(),

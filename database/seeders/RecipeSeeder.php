@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use App\Models\Recipe;
 use App\Models\Category;
+use App\Models\Recipe;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
 class RecipeSeeder extends Seeder
@@ -20,7 +20,7 @@ class RecipeSeeder extends Seeder
             ]);
 
             $position = 0;
-            foreach($recipe['ingredients'] as $ingredient) {
+            foreach ($recipe['ingredients'] as $ingredient) {
                 $newRecipe->ingredients()->create([
                     'position' => $position++,
                     'name' => $ingredient,
@@ -28,7 +28,7 @@ class RecipeSeeder extends Seeder
             }
 
             $position = 0;
-            foreach($recipe['instructions'] as $instruction) {
+            foreach ($recipe['instructions'] as $instruction) {
                 $newRecipe->instructions()->create([
                     'position' => $position++,
                     'name' => $instruction,

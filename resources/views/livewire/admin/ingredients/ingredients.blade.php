@@ -1,44 +1,50 @@
 <?php
 
-use App\Models\Recipe;
 use App\Models\Ingredient;
-use Livewire\Volt\Component;
+use App\Models\Recipe;
 use Illuminate\Support\Facades\DB;
+use Livewire\Component;
 
-new class extends Component {
+new class extends Component
+{
     public Recipe $recipe;
 
     public $name = '';
+
     public $amount = '';
+
     public $note = '';
 
-    public function mount(Recipe $recipe) {
+    public function mount(Recipe $recipe)
+    {
         $this->recipe = $recipe;
     }
 
     public function add()
     {
         $this->query()->create([
-            'name' => $this->pull('name'),
-            'amount' => $this->pull('amount'),
-            'note' => $this->pull('note'),
+            'name' => $this->name,
+            'amount' => $this->amount,
+            'note' => $this->note,
             'position' => $this->query()->max('position') + 1,
         ]);
+
+        $this->reset(['name', 'amount', 'note']);
 
         Flux::toast('Ingredient added successfully!');
     }
 
     public function remove($id)
     {
-		$ingredient = Ingredient::findOrFail($id);
+        $ingredient = Ingredient::findOrFail($id);
 
         $this->move($ingredient, 9999999);
 
         $ingredient->delete();
 
-        Flux::modal('ingredient-remove-'.$id)->close();
+        Flux::modal('ingredient-remove-' . $id)->close();
 
-		Flux::toast('Ingredient successfully deleted.');
+        Flux::toast('Ingredient successfully deleted.');
     }
 
     public function sort($item, $position)
@@ -60,7 +66,9 @@ new class extends Component {
             $after = $position;
 
             // If there was no position change, don't shift...
-            if ($current === $after) return;
+            if ($current === $after) {
+                return;
+            }
 
             // Move the target todo out of the position stack...
             $ingredient->update(['position' => -1]);
