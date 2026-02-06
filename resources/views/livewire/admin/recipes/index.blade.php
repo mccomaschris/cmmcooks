@@ -38,7 +38,7 @@ class extends Component
 			<flux:heading size="xl">All recipes</flux:heading>
 			<flux:subheading>Here are all the recipes currently on the site.</flux:subheading>
 		</div>
-		<livewire:admin.recipes.create />
+		<flux:button icon="plus" variant="primary" href="{{ route('admin.recipes.create') }}">Add Recipe</flux:button>
 	</div>
 
 	<flux:separator variant="subtle" class="my-8" />

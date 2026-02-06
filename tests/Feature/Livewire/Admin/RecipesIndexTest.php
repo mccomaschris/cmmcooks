@@ -7,7 +7,7 @@ use Livewire\Livewire;
 test('admin recipes index requires authentication', function () {
     $response = $this->get('/admin/recipes');
 
-    $response->assertStatus(401);
+    $response->assertRedirect(route('login'));
 });
 
 test('admin recipes index requires admin email', function () {

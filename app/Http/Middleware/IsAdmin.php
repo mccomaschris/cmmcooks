@@ -17,7 +17,11 @@ class IsAdmin
     {
         $allowedEmails = explode(',', config('app.allowed_admin_emails'));
 
-        if ($request->user() && in_array($request->user()->email, $allowedEmails, true)) {
+        if (! $request->user()) {
+            return redirect()->route('login');
+        }
+
+        if (in_array($request->user()->email, $allowedEmails, true)) {
             return $next($request);
         }
 
