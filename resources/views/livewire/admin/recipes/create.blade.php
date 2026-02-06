@@ -63,7 +63,7 @@ class extends Component
             array_filter(
                 array_map(function ($line) {
                     $line = trim($line);
-                    $line = preg_replace('/^(\d+[\.\)]\s*|[-*•]\s*)/', '', $line);
+                    $line = preg_replace('/^(\d+[\.\)]\s*|[-*\x{2022}]\s*)/u', '', $line);
 
                     return trim($line);
                 }, explode("\n", $text)),
