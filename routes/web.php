@@ -30,6 +30,17 @@ Route::middleware([isAdmin::class])->group(function () {
 });
 
 Route::get('/login', function () {
+    if (app()->environment('local')) {
+        $email = explode(',', config('app.allowed_admin_emails'))[0];
+        $user = User::firstOrCreate(
+            ['email' => $email],
+            ['name' => 'Admin', 'password' => 'password'],
+        );
+        Auth::login($user);
+
+        return Redirect::route('admin.index');
+    }
+
     return redirect('/google/redirect');
 })->name('login');
 
