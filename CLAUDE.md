@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-CMM Cooks is a personal recipe management application built with Laravel 12, Livewire 4, and Tailwind CSS 4. Authenticated admins manage recipes through a Livewire-powered admin interface; the public can browse and view recipes.
+CMM Cooks is a personal recipe management application built with Laravel 12, Livewire 4, and Tailwind CSS 4. Authenticated admins manage recipes through a Livewire-powered admin interface; the public can browse and view recipes. a
 
 ## Common Commands
 
