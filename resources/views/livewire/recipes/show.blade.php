@@ -9,7 +9,34 @@ new class extends Component
 }; ?>
 
 <div>
-    <flux:heading size="xl">{{  $recipe->name }}</flux:heading>
+    <div class="flex items-center justify-between">
+        <flux:heading size="xl">{{  $recipe->name }}</flux:heading>
+
+        <div x-data="{
+            wakeLock: null,
+            active: false,
+            async toggle() {
+                if (this.active) {
+                    await this.wakeLock?.release();
+                    this.wakeLock = null;
+                    this.active = false;
+                } else {
+                    try {
+                        this.wakeLock = await navigator.wakeLock.request('screen');
+                        this.active = true;
+                        this.wakeLock.addEventListener('release', () => {
+                            this.active = false;
+                            this.wakeLock = null;
+                        });
+                    } catch (e) {}
+                }
+            }
+        }"
+        x-on:visibilitychange.window="if (active && document.visibilityState === 'visible') { toggle(); toggle(); }"
+        >
+            <flux:switch x-on:click="toggle()" ::checked="active" label="Keep screen on" />
+        </div>
+    </div>
 
     <div class="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div>
