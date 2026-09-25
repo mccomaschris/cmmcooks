@@ -3,44 +3,34 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 const recipes = (await getCollection('recipes')).sort((a, b) => a.data.name.localeCompare(b.data.name));
 const categories = (await getCollection('categories')).sort((a, b) => a.data.name.localeCompare(b.data.name));
+const categoryNames = (ids: string[]) => ids.map((id) => categories.find((category) => category.id === id)?.data.name ?? id).join(' · ');
 ---
 <BaseLayout title="CMM Cooks | Recipes">
-  <section class="hero shell">
-    <div class="eyebrow">THE RECIPE BOX</div>
-    <h1>Good food, <em>kept close.</em></h1>
-    <p>Find a familiar favorite or something new to make tonight.</p>
-  </section>
-  <section class="shell browse" aria-labelledby="recipes-heading">
-    <div class="browse-heading"><div><div class="eyebrow">BROWSE THE COLLECTION</div><h2 id="recipes-heading">Recipes <span class="count">{recipes.length}</span></h2></div></div>
-    <div class="controls">
-      <label class="search-field"><span class="sr-only">Search recipes</span><svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg><input id="recipe-search" type="search" placeholder="Search recipes..." autocomplete="off" /></label>
-      <label class="category-field"><span class="sr-only">Filter by category</span><select id="category-filter"><option value="">All categories</option>{categories.map((category) => <option value={category.id}>{category.data.name}</option>)}</select></label>
+  <div class="plain-wrap plain-index">
+    <h1 class="sr-only">Recipes</h1>
+    <div class="plain-controls">
+      <input class="js-search" type="search" placeholder="Search recipes" aria-label="Search recipes" autocomplete="off" />
+      <select class="js-category" aria-label="Filter by category"><option value="">All</option>{categories.map((category) => <option value={category.id}>{category.data.name}</option>)}</select>
     </div>
-    <div id="recipe-grid" class="recipe-grid">
-      {recipes.map((recipe, index) => <a class="recipe-card" href={`/recipes/${recipe.id}`} data-name={recipe.data.name.toLocaleLowerCase()} data-categories={recipe.data.categories.join(' ')}>
-        <div class="card-art" aria-hidden="true"><span>{String(index + 1).padStart(2, '0')}</span><span class="art-glyph">✳</span></div>
-        <div class="card-body"><div class="card-category">{recipe.data.categories.map((id) => categories.find((category) => category.id === id)?.data.name ?? id).join(' · ')}</div><h3>{recipe.data.name}</h3><div class="card-meta">{recipe.data.ingredients.length} ingredients <span>↗</span></div></div>
-      </a>)}
-    </div>
-    <p id="empty-results" class="empty-results" hidden>No recipes found. Try another search or category.</p>
-    <p id="result-count" class="result-count" aria-live="polite"></p>
-  </section>
+    <ul class="plain-list">
+      {recipes.map((recipe) => <li data-name={recipe.data.name.toLocaleLowerCase()} data-categories={recipe.data.categories.join(' ')}><a href={`/recipes/${recipe.id}`}>{recipe.data.name}</a><span class="muted">{categoryNames(recipe.data.categories)}</span></li>)}
+    </ul>
+    <p class="plain-empty js-empty" hidden>No matches.</p>
+  </div>
   <script>
-    const search = document.querySelector<HTMLInputElement>('#recipe-search')!;
-    const category = document.querySelector<HTMLSelectElement>('#category-filter')!;
-    const cards = [...document.querySelectorAll<HTMLElement>('.recipe-card')];
-    const empty = document.querySelector<HTMLElement>('#empty-results')!;
-    const count = document.querySelector<HTMLElement>('#result-count')!;
+    const search = document.querySelector<HTMLInputElement>('.js-search')!;
+    const category = document.querySelector<HTMLSelectElement>('.js-category')!;
+    const items = [...document.querySelectorAll<HTMLElement>('.plain-list li')];
+    const empty = document.querySelector<HTMLElement>('.js-empty')!;
     const update = () => {
       const query = search.value.trim().toLocaleLowerCase();
       let visible = 0;
-      for (const card of cards) {
-        const match = card.dataset.name!.includes(query) && (!category.value || card.dataset.categories!.split(' ').includes(category.value));
-        card.hidden = !match;
+      for (const item of items) {
+        const match = item.dataset.name!.includes(query) && (!category.value || item.dataset.categories!.split(' ').includes(category.value));
+        item.hidden = !match;
         if (match) visible++;
       }
       empty.hidden = visible !== 0;
-      count.textContent = `${visible} ${visible === 1 ? 'recipe' : 'recipes'} shown`;
     };
     search.addEventListener('input', update);
     category.addEventListener('change', update);
