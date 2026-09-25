@@ -1,0 +1,21 @@
+{
+  "name": "cmmcooks",
+  "compatibility_date": "2026-09-25",
+  "workers_dev": true,
+  "preview_urls": true,
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "www.cmmcooks.com", "custom_domain": true },
+    { "pattern": "cmmcooks.com", "custom_domain": true }
+  ],
+  "observability": {
+    "enabled": true,
+    "traces": {
+      "enabled": true
+    }
+  }
+}

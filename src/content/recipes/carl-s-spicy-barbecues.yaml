@@ -1,0 +1,16 @@
+name: Carl’s Spicy Barbecues
+categories:
+  - dinner
+ingredients:
+  - name: 1 lb ground beef
+  - name: 1 tsp mustard
+  - name: 3 tbsp vinegar
+  - name: 3 tbsp brown sugar
+  - name: 3/4 cup chili sauce
+  - name: 1 tsp worcestershire sauce
+  - name: 1/2 cup water
+instructions:
+  - name: Brown ground beef and remove from pan
+  - name: Combine remaining ingredients and 1/2 cup water in pan and simmer
+      uncovered for 10 minutes, stirring occasionally
+  - name: Add ground beef and simmer 5 minutes

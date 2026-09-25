@@ -1,0 +1,82 @@
+media:
+  input: public/media
+  output: /media
+
+content:
+  - name: recipes
+    label: Recipes
+    type: collection
+    path: src/content/recipes
+    format: yaml
+    filename:
+      template: "{primary}.yaml"
+      field: create
+    operations:
+      rename: false
+    view:
+      primary: name
+      sort: [name]
+      search: [name, description]
+    fields:
+      - name: name
+        label: Recipe name
+        type: string
+        required: true
+      - name: description
+        type: text
+      - name: note
+        label: Recipe notes
+        type: text
+      - name: image
+        type: image
+      - name: categories
+        type: reference
+        options:
+          collection: categories
+          multiple: true
+          value: "{name}"
+          label: "{primary}"
+      - name: ingredients
+        type: object
+        list:
+          min: 1
+          collapsible:
+            collapsed: true
+            summary: "{name}"
+        fields:
+          - name: name
+            type: string
+            required: true
+          - name: amount
+            type: string
+          - name: note
+            type: text
+      - name: instructions
+        type: object
+        list:
+          min: 1
+          collapsible:
+            collapsed: true
+            summary: "{name}"
+        fields:
+          - name: name
+            type: text
+            required: true
+          - name: note
+            type: text
+  - name: categories
+    label: Categories
+    type: collection
+    path: src/content/categories
+    format: yaml
+    filename:
+      template: "{primary}.yaml"
+      field: create
+    operations:
+      rename: false
+    view:
+      primary: name
+    fields:
+      - name: name
+        type: string
+        required: true

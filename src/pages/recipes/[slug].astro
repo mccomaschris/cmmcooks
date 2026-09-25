@@ -1,0 +1,56 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  return (await getCollection('recipes')).map((recipe) => ({ params: { slug: recipe.id }, props: { recipe } }));
+}
+const { recipe } = Astro.props as { recipe: CollectionEntry<'recipes'> };
+const categories = await getCollection('categories');
+const categoryNames = recipe.data.categories.map((id) => categories.find((category) => category.id === id)?.data.name ?? id);
+---
+<BaseLayout title={`${recipe.data.name} | CMM Cooks`} description={recipe.data.description || `Ingredients and instructions for ${recipe.data.name}.`}>
+  <div class="shell detail">
+    <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/recipes">Recipes</a><span>/</span><span aria-current="page">{recipe.data.name}</span></nav>
+    <div class="detail-heading">
+      <div><div class="eyebrow">{categoryNames.join(' · ') || 'RECIPE'}</div><h1>{recipe.data.name}</h1>{recipe.data.description && <p class="description">{recipe.data.description}</p>}</div>
+      <label class="wake-control"><input id="wake-toggle" type="checkbox" /><span>Keep screen on</span></label>
+    </div>
+    {recipe.data.image && <img class="recipe-image" src={recipe.data.image} alt={recipe.data.name} />}
+    <div class="recipe-columns">
+      <section class="ingredients" aria-labelledby="ingredients-heading"><div class="section-title"><span class="eyebrow">WHAT YOU NEED</span><h2 id="ingredients-heading">Ingredients <span class="count">{recipe.data.ingredients.length}</span></h2></div><ul>{recipe.data.ingredients.map((ingredient) => <li><span>{ingredient.amount ? `${ingredient.amount} ` : ''}{ingredient.name}</span>{ingredient.note && <small>{ingredient.note}</small>}</li>)}</ul></section>
+      <section class="instructions" aria-labelledby="instructions-heading"><div class="section-title"><span class="eyebrow">LET'S MAKE IT</span><h2 id="instructions-heading">Instructions</h2></div><ol>{recipe.data.instructions.map((instruction, index) => <li><span class="step-number">{String(index + 1).padStart(2, '0')}</span><div><p>{instruction.name}</p>{instruction.note && <small>{instruction.note}</small>}</div></li>)}</ol></section>
+    </div>
+    {recipe.data.note && <aside class="recipe-note"><div class="eyebrow">FROM THE KITCHEN</div><h2>Notes</h2><p>{recipe.data.note}</p></aside>}
+    <a class="back-link" href="/recipes">← Back to all recipes</a>
+  </div>
+  <script>
+    const toggle = document.querySelector<HTMLInputElement>('#wake-toggle')!;
+    let lock: WakeLockSentinel | null = null;
+    let wanted = false;
+    async function acquire() {
+      if (!wanted || document.visibilityState !== 'visible' || !('wakeLock' in navigator)) return;
+      try {
+        lock = await navigator.wakeLock.request('screen');
+        lock.addEventListener('release', () => { lock = null; });
+        toggle.checked = true;
+      } catch {
+        wanted = false;
+        toggle.checked = false;
+      }
+    }
+    toggle.addEventListener('change', async () => {
+      wanted = toggle.checked;
+      if (wanted) await acquire();
+      else { await lock?.release(); lock = null; }
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible' && wanted && !lock) void acquire();
+    });
+    window.addEventListener('pagehide', () => { wanted = false; void lock?.release(); });
+    if (!('wakeLock' in navigator)) {
+      toggle.disabled = true;
+      toggle.parentElement?.setAttribute('title', 'Screen wake lock is unavailable in this browser');
+    }
+  </script>
+</BaseLayout>

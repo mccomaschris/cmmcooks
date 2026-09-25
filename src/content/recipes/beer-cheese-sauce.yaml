@@ -1,0 +1,19 @@
+name: Beer Cheese Sauce
+categories:
+  - sauces
+ingredients:
+  - name: 2 tbsp butter
+  - name: 2 tbsp flour
+  - name: 1 tsp dry mustard
+  - name: 1 tsp salt
+  - name: 1 cup milk
+  - name: 2 cups shredded sharp cheddar cheese
+  - name: 4 oz canned diced green chilies
+  - name: 1/2 cup beer
+instructions:
+  - name: Add butter and flour to sauce pan over medium heat and whisk until smooth
+  - name: Add mustard, salt, pepper, and mix
+  - name: Slowly mix in milk until smooth and thicker
+  - name: Whisk in beer
+  - name: Add cheese handful at a time and stir as adding
+  - name: Add green chiles

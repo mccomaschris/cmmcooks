@@ -1,0 +1,21 @@
+name: Hot dog sauce
+categories:
+  - sauces
+ingredients:
+  - name: 2 lbs chorizo
+  - name: 1lb ground beef
+  - name: 28 oz can crushed tomatoes
+  - name: 1 diced white onion
+  - name: 2 cloves garlic
+  - name: 6 oz tomato sauce
+  - name: 2 tbsp chili powder
+  - name: 2 tbsp oregano
+  - name: 1/2 bottle beer
+instructions:
+  - name: Brown chorizo and ground beef
+  - name: Add oil and garlic until garlic is fragrant
+  - name: Add onions and cook until starting to soften
+  - name: Add crushed tomatoes, tomato sauce, chili powder, and oregano and mix
+  - name: Add beer and mix well
+  - name: Simmer for 20-30 minutes on low
+  - name: Salt and pepper to taste

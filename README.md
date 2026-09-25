@@ -1,66 +1,31 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# CMM Cooks
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A static Astro recipe site. Recipes and categories live as YAML files in `src/content`; Pages CMS edits those files through GitHub. Cloudflare Workers Static Assets serves the built `dist` directory.
 
-## About Laravel
+## Local development
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+```sh
+npm ci
+npm run dev
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+`npm run check` validates Astro and TypeScript. `npm run build` generates the static site. `npm run verify:content` checks category references and required recipe lists.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+The one-time import source is `migration/recipes_export.json`, a recipe-only export bundled with the former Laravel app. `npm run verify:migration` compares recipe names, filenames, category links, and the order and text of every ingredient and instruction against that export. It contains 17 recipes, 132 ingredients, 65 instructions, and five categories. The September 23 SQL archive described in the migration plan was not present in this workspace. Compare it with the deployed YAML content as soon as it is available, especially original slugs, descriptions, notes, and images. Keep SQL archives out of Git.
 
-## Learning Laravel
+## Editing
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Connect this GitHub repository to [Pages CMS](https://app.pagescms.org/). The root `.pages.yml` provides recipe and category editors. Recipe filenames are the public slugs and cannot be renamed through the editor. Editing a title leaves its URL intact. New images are saved in `public/media`. Ingredient and instruction order in the editor is the order on the recipe page.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Cloudflare deployment
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+The `cmmcooks` Worker is deployed to `www.cmmcooks.com`, `cmmcooks.com`, and `cmmcooks.mccomas-chris.workers.dev`. The `wrangler.jsonc` file configures the static asset directory, custom domains, and a 404 page. No Astro server adapter or runtime Worker code is needed.
 
-## Laravel Sponsors
+Remaining checks and automation:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+1. Compare the missing September 23 SQL archive with the YAML data, especially slugs, descriptions, notes, images, and order. The bundled JSON export does not contain all database fields.
+2. On a preview branch, make a Pages CMS recipe edit and confirm its Git commit triggers a successful Workers preview build.
+3. Inspect `/`, `/recipes`, and existing `/recipes/{slug}` links in the preview. Test search, category filtering, empty results, and the screen wake lock in a supported secure browser.
+4. Connect this repository to Workers Builds with build command `npm run build`, deploy command `npx wrangler deploy`, and preview command `npx wrangler preview`.
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Pages CMS and Git-connected Workers Builds still require their repository connections.

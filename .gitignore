@@ -1,5 +1,11 @@
 /.phpunit.cache
 /node_modules
+/dist
+/.astro
+/.wrangler
+*.sql
+*.sql.gz
+*.dump
 /public/build
 /public/hot
 /public/storage

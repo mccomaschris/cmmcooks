@@ -1,0 +1,24 @@
+name: Beef and Broccoli Bowl
+categories:
+  - dinner
+ingredients:
+  - name: 1 1/2 cup medium grain white rice
+  - name: 3 cups water
+  - name: 1 lb shaved beef
+  - name: 3/4 cup sweet chili sauce
+  - name: 3 tbsp sriracha
+  - name: 3 cups shredded carrots
+  - name: 4 cups broccoli florets
+  - name: 1 tbsp olive oil
+  - name: 1/4 cup roaster, unsalted peanuts crushed
+instructions:
+  - name: Cook rice and water
+  - name: Heat olive oil in pan on medium heat, add beef and cook through
+  - name: Reduce heat to low. Add sweet chili sauce, sriracha, soy sauce
+  - name: Stir until sauce is combined, beef is coated
+  - name: In a separate pan, add broccoli florets with 2 tbsp of water and cover.
+      Steam on low heat for about 5 minutes
+  - name: Remove cover and add shredded carrots
+  - name: Stir to combine and cook until carrots soften
+  - name: Assemble your bowl by plating rice first, then beef, then veggies, and
+      crushed peanuts on top

@@ -1,12 +1,22 @@
 {
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "build": "npx @tailwindcss/cli -i ./resources/css/cmmcooks.css -o ./public/css/cmmcooks.css --minifiy",
-        "dev": "npx @tailwindcss/cli -i ./resources/css/cmmcooks.css -o ./public/css/cmmcooks.css --watch"
-    },
-    "devDependencies": {
-        "tailwindcss": "^4.0.9",
-		"@tailwindcss/cli": "^4.0.9"
-    }
+  "name": "cmmcooks",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "check": "astro check",
+    "preview": "astro preview",
+    "verify:content": "node scripts/verify-content.mjs",
+    "verify:migration": "node scripts/verify-migration.mjs"
+  },
+  "dependencies": {
+    "astro": "^7.3.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.5",
+    "typescript": "^5.9.0",
+    "wrangler": "^4.0.0",
+    "yaml": "^2.0.0"
+  }
 }
